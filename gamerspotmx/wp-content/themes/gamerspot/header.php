@@ -80,12 +80,22 @@
 	                    	<!--  <a href="albums.html" class="onlinestore">Online Store</a> -->
 	                        <div id="smoothmenu1" class="ddsmoothmenu">
 	                            <ul>
-	                            	<?php $categories = get_categories(array('orderby' => 'name', 'parent' => 0)); print_r($categories);?>
-	                            	<?php #foreach($categories as $category): ?>
+	                            	<?php $categories = get_categories(array('orderby' => 'name', 'parent' => 0)); #print_r($categories);?>
+	                            	<?php foreach($categories as $category):?>
 	                            	
-	                            	<li><a href="index.html"><?= $category['name']; ?></a></li>
-	                            	<?php #endforeach; ?>
-	                                <li class="current-menu-item"><a href="index.html">Home</a></li>
+	                            	<li>
+	                            		<a href="<?= get_bloginfo('url').'?cat='.$category->term_id ?>"><?= $category->name; ?></a>
+	                            		<?php $childs = get_categories(array('orderby' => 'name', 'parent' => $category->term_id)); ?>
+	                            		<?php if(!empty($childs)): ?>
+	                            		<ul>
+		                            		<?php foreach ($childs as $child): ?>
+		                            			 <li><a href="<?= get_bloginfo('url').'?cat='.$child->term_id; ?>"><?= $child->name; ?></a></li>
+		                            		<?php endforeach; ?>
+		                            	</ul>
+	                            		<?php endif; ?>
+	                            	</li>
+	                            	<?php endforeach; ?>
+	                                <!--  <li class="current-menu-item"><a href="index.html">Home</a></li>
 	                                <li><a href="about-us.html">Reviews</a></li>
 	                                <li><a href="news.html">Previews</a></li>
 	                                <li><a href="#">Secciones</a>
@@ -117,7 +127,7 @@
 	                                        <li><a href="gallery-four-col.html">Four Column</a></li>
 	                                    </ul>
 	                                </li>
-	                                <li><a href="contact-us.html">Contacto</a></li>
+	                                <li><a href="contact-us.html">Contacto</a></li>-->
 	                            </ul>
 	                            <div class="clear"></div>
 	                        </div>
