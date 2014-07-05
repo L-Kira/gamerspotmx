@@ -74,6 +74,26 @@
 	                	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo"><img style="width: 200px;" src="<?php bloginfo('template_url'); ?>/images/GamerSpot Logo.png" alt="" /></a>
 	                </div>
 	                <!-- Logo End -->
+	                <?php 
+	                print_r(wp_nav_menu(array(
+						'theme_location'  => '',
+						'menu'            => '',
+						'container'       => 'div',
+						'container_class' => '',
+						'container_id'    => '',
+						'menu_class'      => 'menu',
+						'menu_id'         => '',
+						'echo'            => true,
+						'fallback_cb'     => 'wp_page_menu',
+						'before'          => '',
+						'after'           => '',
+						'link_before'     => '',
+						'link_after'      => '',
+						'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+						'depth'           => 0,
+						'walker'          => ''
+					)));
+					?>
 	                <div class="eleven columns right">
 	                    <!-- Navigation Start -->
 	                    <div class="navigation">
